@@ -1,7 +1,7 @@
 import functions from 'firebase-functions';
 import express from 'express';
 import cors from 'cors';
-import { getAllAlbums, createNewAlbum } from './src/albums.js';
+import { getAllAlbums, createNewAlbum, deleteAlbum } from './src/albums.js';
 
 const app = express();
 app.use(express.json());
@@ -9,6 +9,7 @@ app.use(cors());
 
 app.get('/albums', getAllAlbums);
 app.post('/albums', createNewAlbum);
+app.post('/albums/delete', deleteAlbum);
 
 export const api = functions.https.onRequest(app);
 
